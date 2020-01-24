@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/haugoug/src/riscv-gnu-toolchain/instal/lib/../lib'
+libdir='/home/haugoug/src/riscv-gnu-toolchain/install/lib/../lib'

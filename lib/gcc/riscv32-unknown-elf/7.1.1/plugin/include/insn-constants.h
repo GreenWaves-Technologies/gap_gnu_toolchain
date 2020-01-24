@@ -4,18 +4,18 @@
 #ifndef GCC_INSN_CONSTANTS_H
 #define GCC_INSN_CONSTANTS_H
 
+#define REG_LS0 70
+#define REG_LS1 71
+#define S0_REGNUM 8
+#define REG_LE0 68
+#define REG_LE1 69
+#define T0_REGNUM 5
+#define S1_REGNUM 9
 #define T1_REGNUM 6
+#define RETURN_ADDR_REGNUM 1
 #define S2_REGNUM 18
 #define REG_LC0 66
 #define REG_LC1 67
-#define REG_LS1 71
-#define S1_REGNUM 9
-#define REG_LE0 68
-#define REG_LS0 70
-#define REG_LE1 69
-#define S0_REGNUM 8
-#define RETURN_ADDR_REGNUM 1
-#define T0_REGNUM 5
 #define VIT_REG 72
 
 enum unspec {
@@ -106,9 +106,10 @@ enum unspecv {
   UNSPECV_OMP_PULP_CRITICAL_END = 19,
   UNSPECV_WRITESI_VOL = 20,
   UNSPECV_READSI_VOL = 21,
-  UNSPECV_SPR_READ_VOL = 22
+  UNSPECV_SPR_READ_VOL = 22,
+  UNSPECV_POINTER_ARG = 23
 };
-#define NUM_UNSPECV_VALUES 23
+#define NUM_UNSPECV_VALUES 24
 extern const char *const unspecv_strings[];
 
 #endif /* GCC_INSN_CONSTANTS_H */

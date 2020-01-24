@@ -4,18 +4,21 @@
 #ifndef GCC_INSN_FLAGS_H
 #define GCC_INSN_FLAGS_H
 
+#define HAVE_addv1sf3 (TARGET_HARD_FLOAT)
 #define HAVE_addsf3 (TARGET_HARD_FLOAT)
 #define HAVE_adddf3 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_addhf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_addohf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_addsi3 1
 #define HAVE_adddi3 (TARGET_64BIT)
+#define HAVE_subv1sf3 (TARGET_HARD_FLOAT)
 #define HAVE_subsf3 (TARGET_HARD_FLOAT)
 #define HAVE_subdf3 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_subhf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_subohf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_subdi3 (TARGET_64BIT)
 #define HAVE_subsi3 1
+#define HAVE_mulv1sf3 (TARGET_HARD_FLOAT)
 #define HAVE_mulsf3 (TARGET_HARD_FLOAT)
 #define HAVE_muldf3 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_mulhf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
@@ -36,49 +39,60 @@
 #define HAVE_udivdi3 (TARGET_DIV && TARGET_64BIT)
 #define HAVE_moddi3 (TARGET_DIV && TARGET_64BIT)
 #define HAVE_umoddi3 (TARGET_DIV && TARGET_64BIT)
+#define HAVE_divv1sf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_HARD_FLOAT))
 #define HAVE_divsf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_HARD_FLOAT))
 #define HAVE_divdf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_divhf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_divohf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_sqrtv1sf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_HARD_FLOAT))
 #define HAVE_sqrtsf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_HARD_FLOAT))
 #define HAVE_sqrtdf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_sqrthf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_sqrtohf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_fmav1sf4 (TARGET_HARD_FLOAT)
 #define HAVE_fmasf4 (TARGET_HARD_FLOAT)
 #define HAVE_fmadf4 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_fmahf4 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_fmaohf4 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_fmsv1sf4 (TARGET_HARD_FLOAT)
 #define HAVE_fmssf4 (TARGET_HARD_FLOAT)
 #define HAVE_fmsdf4 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_fmshf4 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_fmsohf4 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_fnmsv1sf4 (TARGET_HARD_FLOAT)
 #define HAVE_fnmssf4 (TARGET_HARD_FLOAT)
 #define HAVE_fnmsdf4 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_fnmshf4 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_fnmsohf4 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_fnmav1sf4 (TARGET_HARD_FLOAT)
 #define HAVE_fnmasf4 (TARGET_HARD_FLOAT)
 #define HAVE_fnmadf4 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_fnmahf4 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_fnmaohf4 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_mulohfsf3 ((TARGET_HARD_FLOAT && Has_FAUX && (OHFmode == OHFmode && Has_F16ALT)) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_maddohfsf3_internal ((TARGET_HARD_FLOAT && Has_FAUX && (OHFmode == OHFmode && Has_F16ALT)) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_absv1sf2 (TARGET_HARD_FLOAT)
 #define HAVE_abssf2 (TARGET_HARD_FLOAT)
 #define HAVE_absdf2 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_abshf2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_absohf2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_abssi2 ((Pulp_Cpu>=PULP_V0))
+#define HAVE_copysignv1sf3 (TARGET_HARD_FLOAT)
 #define HAVE_copysignsf3 (TARGET_HARD_FLOAT)
 #define HAVE_copysigndf3 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_copysignhf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_copysignohf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_negv1sf2 (TARGET_HARD_FLOAT)
 #define HAVE_negsf2 (TARGET_HARD_FLOAT)
 #define HAVE_negdf2 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_neghf2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_negohf2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_sminv1sf3 (TARGET_HARD_FLOAT)
 #define HAVE_sminsf3 (TARGET_HARD_FLOAT)
 #define HAVE_smindf3 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_sminhf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_sminohf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_smaxv1sf3 (TARGET_HARD_FLOAT)
 #define HAVE_smaxsf3 (TARGET_HARD_FLOAT)
 #define HAVE_smaxdf3 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_smaxhf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
@@ -226,6 +240,10 @@
 #define HAVE_floatunsdisf2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT) && (TARGET_64BIT)))
 #define HAVE_floatunssidf2 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_floatunsdidf2 ((TARGET_HARD_FLOAT) && ((TARGET_DOUBLE_FLOAT) && (TARGET_64BIT)))
+#define HAVE_lrintv1sfsi2 (TARGET_HARD_FLOAT)
+#define HAVE_lroundv1sfsi2 (TARGET_HARD_FLOAT)
+#define HAVE_lrintv1sfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && (TARGET_HARD_FLOAT)))
+#define HAVE_lroundv1sfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && (TARGET_HARD_FLOAT)))
 #define HAVE_lrintsfsi2 (TARGET_HARD_FLOAT)
 #define HAVE_lroundsfsi2 (TARGET_HARD_FLOAT)
 #define HAVE_lrintsfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && (TARGET_HARD_FLOAT)))
@@ -268,16 +286,16 @@
 #define HAVE_got_load_tls_iedi (Pmode == DImode)
 #define HAVE_auipcsi (Pmode == SImode)
 #define HAVE_auipcdi (Pmode == DImode)
-#define HAVE_loadqi_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG))
-#define HAVE_loadhi_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG))
-#define HAVE_loadhf_ind_reg_reg ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG)) && ((Has_F16)))
-#define HAVE_loadohf_ind_reg_reg ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG)) && ((Has_F16ALT)))
-#define HAVE_loadsi_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG))
-#define HAVE_loadsf_ind_reg_reg ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG)) && ((!TARGET_HARD_FLOAT || TARGET_FPREGS_ON_GRREGS)))
-#define HAVE_loadv2hi_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG))
-#define HAVE_loadv2hf_ind_reg_reg ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG)) && ((Has_F16)))
-#define HAVE_loadv2ohf_ind_reg_reg ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG)) && ((Has_F16ALT)))
-#define HAVE_loadv4qi_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG))
+#define HAVE_loadqi_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG && ((reload_completed || reload_in_progress) || !(QImode == QImode || QImode == HImode))))
+#define HAVE_loadhi_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG && ((reload_completed || reload_in_progress) || !(HImode == QImode || HImode == HImode))))
+#define HAVE_loadhf_ind_reg_reg ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG && ((reload_completed || reload_in_progress) || !(HFmode == QImode || HFmode == HImode)))) && ((Has_F16)))
+#define HAVE_loadohf_ind_reg_reg ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG && ((reload_completed || reload_in_progress) || !(OHFmode == QImode || OHFmode == HImode)))) && ((Has_F16ALT)))
+#define HAVE_loadsi_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG && ((reload_completed || reload_in_progress) || !(SImode == QImode || SImode == HImode))))
+#define HAVE_loadsf_ind_reg_reg ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG && ((reload_completed || reload_in_progress) || !(SFmode == QImode || SFmode == HImode)))) && ((!TARGET_HARD_FLOAT || TARGET_FPREGS_ON_GRREGS)))
+#define HAVE_loadv2hi_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG && ((reload_completed || reload_in_progress) || !(V2HImode == QImode || V2HImode == HImode))))
+#define HAVE_loadv2hf_ind_reg_reg ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG && ((reload_completed || reload_in_progress) || !(V2HFmode == QImode || V2HFmode == HImode)))) && ((Has_F16)))
+#define HAVE_loadv2ohf_ind_reg_reg ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG && ((reload_completed || reload_in_progress) || !(V2OHFmode == QImode || V2OHFmode == HImode)))) && ((Has_F16ALT)))
+#define HAVE_loadv4qi_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG && ((reload_completed || reload_in_progress) || !(V4QImode == QImode || V4QImode == HImode))))
 #define HAVE_loadqi_ext_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG))
 #define HAVE_loadqi_uext_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG))
 #define HAVE_loadhi_ext_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG))
@@ -326,20 +344,21 @@
 #define HAVE_OffsetedReadHalf ((Pulp_Cpu>=PULP_V2))
 #define HAVE_OffsetedReadByte ((Pulp_Cpu>=PULP_V2))
 #define HAVE_OffsetedWrite ((Pulp_Cpu>=PULP_V2))
+#define HAVE_OffsetedWritePtr ((Pulp_Cpu>=PULP_V2))
 #define HAVE_OffsetedWriteHalf ((Pulp_Cpu>=PULP_V2))
 #define HAVE_OffsetedWriteByte ((Pulp_Cpu>=PULP_V2))
 #define HAVE_OffsetedReadOMP ((Pulp_Cpu>=PULP_V2))
 #define HAVE_OffsetedReadNonVol ((Pulp_Cpu>=PULP_V2))
-#define HAVE_loadqi_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadhi_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadhf_ind_postinc ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16)))
-#define HAVE_loadohf_ind_postinc ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16ALT)))
-#define HAVE_loadsi_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadsf_ind_postinc ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((!TARGET_HARD_FLOAT || TARGET_FPREGS_ON_GRREGS)))
-#define HAVE_loadv2hi_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadv2hf_ind_postinc ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16)))
-#define HAVE_loadv2ohf_ind_postinc ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16ALT)))
-#define HAVE_loadv4qi_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
+#define HAVE_loadqi_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(QImode == QImode || QImode == HImode))))
+#define HAVE_loadhi_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(HImode == QImode || HImode == HImode))))
+#define HAVE_loadhf_ind_postinc ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(HFmode == QImode || HFmode == HImode)))) && ((Has_F16)))
+#define HAVE_loadohf_ind_postinc ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(OHFmode == QImode || OHFmode == HImode)))) && ((Has_F16ALT)))
+#define HAVE_loadsi_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(SImode == QImode || SImode == HImode))))
+#define HAVE_loadsf_ind_postinc ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(SFmode == QImode || SFmode == HImode)))) && ((!TARGET_HARD_FLOAT || TARGET_FPREGS_ON_GRREGS)))
+#define HAVE_loadv2hi_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V2HImode == QImode || V2HImode == HImode))))
+#define HAVE_loadv2hf_ind_postinc ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V2HFmode == QImode || V2HFmode == HImode)))) && ((Has_F16)))
+#define HAVE_loadv2ohf_ind_postinc ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V2OHFmode == QImode || V2OHFmode == HImode)))) && ((Has_F16ALT)))
+#define HAVE_loadv4qi_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V4QImode == QImode || V4QImode == HImode))))
 #define HAVE_loadqi_ext_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
 #define HAVE_loadqi_uext_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
 #define HAVE_loadhi_ext_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
@@ -360,16 +379,16 @@
 #define HAVE_loadv2ohf_uext_ind_postinc ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16ALT)))
 #define HAVE_loadv4qi_ext_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
 #define HAVE_loadv4qi_uext_ind_postinc (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadqi_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadhi_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadhf_ind_postdec ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16)))
-#define HAVE_loadohf_ind_postdec ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16ALT)))
-#define HAVE_loadsi_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadsf_ind_postdec ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((!TARGET_HARD_FLOAT || TARGET_FPREGS_ON_GRREGS)))
-#define HAVE_loadv2hi_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadv2hf_ind_postdec ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16)))
-#define HAVE_loadv2ohf_ind_postdec ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16ALT)))
-#define HAVE_loadv4qi_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
+#define HAVE_loadqi_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(QImode == QImode || QImode == HImode))))
+#define HAVE_loadhi_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(HImode == QImode || HImode == HImode))))
+#define HAVE_loadhf_ind_postdec ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(HFmode == QImode || HFmode == HImode)))) && ((Has_F16)))
+#define HAVE_loadohf_ind_postdec ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(OHFmode == QImode || OHFmode == HImode)))) && ((Has_F16ALT)))
+#define HAVE_loadsi_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(SImode == QImode || SImode == HImode))))
+#define HAVE_loadsf_ind_postdec ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(SFmode == QImode || SFmode == HImode)))) && ((!TARGET_HARD_FLOAT || TARGET_FPREGS_ON_GRREGS)))
+#define HAVE_loadv2hi_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V2HImode == QImode || V2HImode == HImode))))
+#define HAVE_loadv2hf_ind_postdec ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V2HFmode == QImode || V2HFmode == HImode)))) && ((Has_F16)))
+#define HAVE_loadv2ohf_ind_postdec ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V2OHFmode == QImode || V2OHFmode == HImode)))) && ((Has_F16ALT)))
+#define HAVE_loadv4qi_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V4QImode == QImode || V4QImode == HImode))))
 #define HAVE_loadqi_ext_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
 #define HAVE_loadqi_uext_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
 #define HAVE_loadhi_ext_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
@@ -390,16 +409,16 @@
 #define HAVE_loadv2ohf_uext_ind_postdec ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16ALT)))
 #define HAVE_loadv4qi_ext_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
 #define HAVE_loadv4qi_uext_ind_postdec (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadqi_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadhi_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadhf_ind_post_mod ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16)))
-#define HAVE_loadohf_ind_post_mod ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16ALT)))
-#define HAVE_loadsi_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadsf_ind_post_mod ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((!TARGET_HARD_FLOAT || TARGET_FPREGS_ON_GRREGS)))
-#define HAVE_loadv2hi_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
-#define HAVE_loadv2hf_ind_post_mod ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16)))
-#define HAVE_loadv2ohf_ind_post_mod ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD)) && ((Has_F16ALT)))
-#define HAVE_loadv4qi_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
+#define HAVE_loadqi_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(QImode == QImode || QImode == HImode))))
+#define HAVE_loadhi_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(HImode == QImode || HImode == HImode))))
+#define HAVE_loadhf_ind_post_mod ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(HFmode == QImode || HFmode == HImode)))) && ((Has_F16)))
+#define HAVE_loadohf_ind_post_mod ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(OHFmode == QImode || OHFmode == HImode)))) && ((Has_F16ALT)))
+#define HAVE_loadsi_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(SImode == QImode || SImode == HImode))))
+#define HAVE_loadsf_ind_post_mod ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(SFmode == QImode || SFmode == HImode)))) && ((!TARGET_HARD_FLOAT || TARGET_FPREGS_ON_GRREGS)))
+#define HAVE_loadv2hi_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V2HImode == QImode || V2HImode == HImode))))
+#define HAVE_loadv2hf_ind_post_mod ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V2HFmode == QImode || V2HFmode == HImode)))) && ((Has_F16)))
+#define HAVE_loadv2ohf_ind_post_mod ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V2OHFmode == QImode || V2OHFmode == HImode)))) && ((Has_F16ALT)))
+#define HAVE_loadv4qi_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD && ((reload_completed || reload_in_progress) || !(V4QImode == QImode || V4QImode == HImode))))
 #define HAVE_loadqi_ext_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
 #define HAVE_loadqi_uext_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
 #define HAVE_loadhi_ext_ind_post_mod (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOPOSTMOD))
@@ -852,6 +871,10 @@
 #define HAVE_cmp_swap_v4qi_scltu (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOVECT))
 #define HAVE_cmp_swap_v4qi_scgeu (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOVECT))
 #define HAVE_cmp_swap_v4qi_scleu (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOVECT))
+#define HAVE_flt_quietv1sfsi4 ((TARGET_HARD_FLOAT) && ((((!TARGET_64BIT) && (TARGET_HARD_FLOAT)) && (TARGET_HARD_FLOAT)) && (!TARGET_64BIT)))
+#define HAVE_fle_quietv1sfsi4 ((TARGET_HARD_FLOAT) && ((((!TARGET_64BIT) && (TARGET_HARD_FLOAT)) && (TARGET_HARD_FLOAT)) && (!TARGET_64BIT)))
+#define HAVE_flt_quietv1sfdi4 ((TARGET_HARD_FLOAT) && ((((TARGET_64BIT) && (TARGET_HARD_FLOAT)) && (TARGET_HARD_FLOAT)) && (TARGET_64BIT)))
+#define HAVE_fle_quietv1sfdi4 ((TARGET_HARD_FLOAT) && ((((TARGET_64BIT) && (TARGET_HARD_FLOAT)) && (TARGET_HARD_FLOAT)) && (TARGET_64BIT)))
 #define HAVE_flt_quietsfsi4 ((TARGET_HARD_FLOAT) && ((((!TARGET_64BIT) && (TARGET_HARD_FLOAT)) && (TARGET_HARD_FLOAT)) && (!TARGET_64BIT)))
 #define HAVE_fle_quietsfsi4 ((TARGET_HARD_FLOAT) && ((((!TARGET_64BIT) && (TARGET_HARD_FLOAT)) && (TARGET_HARD_FLOAT)) && (!TARGET_64BIT)))
 #define HAVE_flt_quietsfdi4 ((TARGET_HARD_FLOAT) && ((((TARGET_64BIT) && (TARGET_HARD_FLOAT)) && (TARGET_HARD_FLOAT)) && (TARGET_64BIT)))
@@ -949,6 +972,7 @@
 #define HAVE_movmisalignv2hf (Has_F16)
 #define HAVE_movmisalignv2ohf (Has_F16ALT)
 #define HAVE_movmisalignohf (Has_F16ALT)
+#define HAVE_movmisalignv1sf 1
 #define HAVE_movmisalignsf 1
 #define HAVE_movmisalignsi 1
 #define HAVE_movhi 1
@@ -1013,6 +1037,7 @@
 #define HAVE_cbranchohf4 ((TARGET_HARD_FLOAT && (OHFmode == SFmode || OHFmode == DFmode || (OHFmode == OHFmode && Has_F16ALT) || (OHFmode == HFmode && Has_F16))) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_cstoresi4 1
 #define HAVE_cstoredi4 (TARGET_64BIT)
+#define HAVE_cstorev1sf4 (TARGET_HARD_FLOAT)
 #define HAVE_cstoresf4 (TARGET_HARD_FLOAT)
 #define HAVE_cstoredf4 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_cstorehf4 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
@@ -1034,18 +1059,21 @@
 #define HAVE_atomic_compare_and_swapsi (TARGET_ATOMIC)
 #define HAVE_atomic_compare_and_swapdi ((TARGET_ATOMIC) && (TARGET_64BIT))
 #define HAVE_atomic_test_and_set (TARGET_ATOMIC)
+extern rtx        gen_addv1sf3                             (rtx, rtx, rtx);
 extern rtx        gen_addsf3                               (rtx, rtx, rtx);
 extern rtx        gen_adddf3                               (rtx, rtx, rtx);
 extern rtx        gen_addhf3                               (rtx, rtx, rtx);
 extern rtx        gen_addohf3                              (rtx, rtx, rtx);
 extern rtx        gen_addsi3                               (rtx, rtx, rtx);
 extern rtx        gen_adddi3                               (rtx, rtx, rtx);
+extern rtx        gen_subv1sf3                             (rtx, rtx, rtx);
 extern rtx        gen_subsf3                               (rtx, rtx, rtx);
 extern rtx        gen_subdf3                               (rtx, rtx, rtx);
 extern rtx        gen_subhf3                               (rtx, rtx, rtx);
 extern rtx        gen_subohf3                              (rtx, rtx, rtx);
 extern rtx        gen_subdi3                               (rtx, rtx, rtx);
 extern rtx        gen_subsi3                               (rtx, rtx, rtx);
+extern rtx        gen_mulv1sf3                             (rtx, rtx, rtx);
 extern rtx        gen_mulsf3                               (rtx, rtx, rtx);
 extern rtx        gen_muldf3                               (rtx, rtx, rtx);
 extern rtx        gen_mulhf3                               (rtx, rtx, rtx);
@@ -1066,26 +1094,32 @@ extern rtx        gen_divdi3                               (rtx, rtx, rtx);
 extern rtx        gen_udivdi3                              (rtx, rtx, rtx);
 extern rtx        gen_moddi3                               (rtx, rtx, rtx);
 extern rtx        gen_umoddi3                              (rtx, rtx, rtx);
+extern rtx        gen_divv1sf3                             (rtx, rtx, rtx);
 extern rtx        gen_divsf3                               (rtx, rtx, rtx);
 extern rtx        gen_divdf3                               (rtx, rtx, rtx);
 extern rtx        gen_divhf3                               (rtx, rtx, rtx);
 extern rtx        gen_divohf3                              (rtx, rtx, rtx);
+extern rtx        gen_sqrtv1sf2                            (rtx, rtx);
 extern rtx        gen_sqrtsf2                              (rtx, rtx);
 extern rtx        gen_sqrtdf2                              (rtx, rtx);
 extern rtx        gen_sqrthf2                              (rtx, rtx);
 extern rtx        gen_sqrtohf2                             (rtx, rtx);
+extern rtx        gen_fmav1sf4                             (rtx, rtx, rtx, rtx);
 extern rtx        gen_fmasf4                               (rtx, rtx, rtx, rtx);
 extern rtx        gen_fmadf4                               (rtx, rtx, rtx, rtx);
 extern rtx        gen_fmahf4                               (rtx, rtx, rtx, rtx);
 extern rtx        gen_fmaohf4                              (rtx, rtx, rtx, rtx);
+extern rtx        gen_fmsv1sf4                             (rtx, rtx, rtx, rtx);
 extern rtx        gen_fmssf4                               (rtx, rtx, rtx, rtx);
 extern rtx        gen_fmsdf4                               (rtx, rtx, rtx, rtx);
 extern rtx        gen_fmshf4                               (rtx, rtx, rtx, rtx);
 extern rtx        gen_fmsohf4                              (rtx, rtx, rtx, rtx);
+extern rtx        gen_fnmsv1sf4                            (rtx, rtx, rtx, rtx);
 extern rtx        gen_fnmssf4                              (rtx, rtx, rtx, rtx);
 extern rtx        gen_fnmsdf4                              (rtx, rtx, rtx, rtx);
 extern rtx        gen_fnmshf4                              (rtx, rtx, rtx, rtx);
 extern rtx        gen_fnmsohf4                             (rtx, rtx, rtx, rtx);
+extern rtx        gen_fnmav1sf4                            (rtx, rtx, rtx, rtx);
 extern rtx        gen_fnmasf4                              (rtx, rtx, rtx, rtx);
 extern rtx        gen_fnmadf4                              (rtx, rtx, rtx, rtx);
 extern rtx        gen_fnmahf4                              (rtx, rtx, rtx, rtx);
@@ -1116,23 +1150,28 @@ gen_maddhfsf3_internal(rtx ARG_UNUSED (a), rtx ARG_UNUSED (b), rtx ARG_UNUSED (c
   return 0;
 }
 extern rtx        gen_maddohfsf3_internal                  (rtx, rtx, rtx);
+extern rtx        gen_absv1sf2                             (rtx, rtx);
 extern rtx        gen_abssf2                               (rtx, rtx);
 extern rtx        gen_absdf2                               (rtx, rtx);
 extern rtx        gen_abshf2                               (rtx, rtx);
 extern rtx        gen_absohf2                              (rtx, rtx);
 extern rtx        gen_abssi2                               (rtx, rtx);
+extern rtx        gen_copysignv1sf3                        (rtx, rtx, rtx);
 extern rtx        gen_copysignsf3                          (rtx, rtx, rtx);
 extern rtx        gen_copysigndf3                          (rtx, rtx, rtx);
 extern rtx        gen_copysignhf3                          (rtx, rtx, rtx);
 extern rtx        gen_copysignohf3                         (rtx, rtx, rtx);
+extern rtx        gen_negv1sf2                             (rtx, rtx);
 extern rtx        gen_negsf2                               (rtx, rtx);
 extern rtx        gen_negdf2                               (rtx, rtx);
 extern rtx        gen_neghf2                               (rtx, rtx);
 extern rtx        gen_negohf2                              (rtx, rtx);
+extern rtx        gen_sminv1sf3                            (rtx, rtx, rtx);
 extern rtx        gen_sminsf3                              (rtx, rtx, rtx);
 extern rtx        gen_smindf3                              (rtx, rtx, rtx);
 extern rtx        gen_sminhf3                              (rtx, rtx, rtx);
 extern rtx        gen_sminohf3                             (rtx, rtx, rtx);
+extern rtx        gen_smaxv1sf3                            (rtx, rtx, rtx);
 extern rtx        gen_smaxsf3                              (rtx, rtx, rtx);
 extern rtx        gen_smaxdf3                              (rtx, rtx, rtx);
 extern rtx        gen_smaxhf3                              (rtx, rtx, rtx);
@@ -1278,6 +1317,10 @@ extern rtx        gen_floatunssisf2                        (rtx, rtx);
 extern rtx        gen_floatunsdisf2                        (rtx, rtx);
 extern rtx        gen_floatunssidf2                        (rtx, rtx);
 extern rtx        gen_floatunsdidf2                        (rtx, rtx);
+extern rtx        gen_lrintv1sfsi2                         (rtx, rtx);
+extern rtx        gen_lroundv1sfsi2                        (rtx, rtx);
+extern rtx        gen_lrintv1sfdi2                         (rtx, rtx);
+extern rtx        gen_lroundv1sfdi2                        (rtx, rtx);
 extern rtx        gen_lrintsfsi2                           (rtx, rtx);
 extern rtx        gen_lroundsfsi2                          (rtx, rtx);
 extern rtx        gen_lrintsfdi2                           (rtx, rtx);
@@ -1402,6 +1445,7 @@ extern rtx        gen_OffsetedRead                         (rtx, rtx, rtx);
 extern rtx        gen_OffsetedReadHalf                     (rtx, rtx, rtx);
 extern rtx        gen_OffsetedReadByte                     (rtx, rtx, rtx);
 extern rtx        gen_OffsetedWrite                        (rtx, rtx, rtx);
+extern rtx        gen_OffsetedWritePtr                     (rtx, rtx, rtx);
 extern rtx        gen_OffsetedWriteHalf                    (rtx, rtx, rtx);
 extern rtx        gen_OffsetedWriteByte                    (rtx, rtx, rtx);
 extern rtx        gen_OffsetedReadOMP                      (rtx, rtx, rtx);
@@ -1924,6 +1968,10 @@ extern rtx        gen_cmp_swap_v4qi_scgtu                  (rtx, rtx, rtx);
 extern rtx        gen_cmp_swap_v4qi_scltu                  (rtx, rtx, rtx);
 extern rtx        gen_cmp_swap_v4qi_scgeu                  (rtx, rtx, rtx);
 extern rtx        gen_cmp_swap_v4qi_scleu                  (rtx, rtx, rtx);
+extern rtx        gen_flt_quietv1sfsi4                     (rtx, rtx, rtx);
+extern rtx        gen_fle_quietv1sfsi4                     (rtx, rtx, rtx);
+extern rtx        gen_flt_quietv1sfdi4                     (rtx, rtx, rtx);
+extern rtx        gen_fle_quietv1sfdi4                     (rtx, rtx, rtx);
 extern rtx        gen_flt_quietsfsi4                       (rtx, rtx, rtx);
 extern rtx        gen_fle_quietsfsi4                       (rtx, rtx, rtx);
 extern rtx        gen_flt_quietsfdi4                       (rtx, rtx, rtx);
@@ -2033,6 +2081,7 @@ extern rtx        gen_movmisalignv2hi                      (rtx, rtx);
 extern rtx        gen_movmisalignv2hf                      (rtx, rtx);
 extern rtx        gen_movmisalignv2ohf                     (rtx, rtx);
 extern rtx        gen_movmisalignohf                       (rtx, rtx);
+extern rtx        gen_movmisalignv1sf                      (rtx, rtx);
 extern rtx        gen_movmisalignsf                        (rtx, rtx);
 extern rtx        gen_movmisalignsi                        (rtx, rtx);
 extern rtx        gen_movhi                                (rtx, rtx);
@@ -2097,6 +2146,7 @@ extern rtx        gen_cbranchhf4                           (rtx, rtx, rtx, rtx);
 extern rtx        gen_cbranchohf4                          (rtx, rtx, rtx, rtx);
 extern rtx        gen_cstoresi4                            (rtx, rtx, rtx, rtx);
 extern rtx        gen_cstoredi4                            (rtx, rtx, rtx, rtx);
+extern rtx        gen_cstorev1sf4                          (rtx, rtx, rtx, rtx);
 extern rtx        gen_cstoresf4                            (rtx, rtx, rtx, rtx);
 extern rtx        gen_cstoredf4                            (rtx, rtx, rtx, rtx);
 extern rtx        gen_cstorehf4                            (rtx, rtx, rtx, rtx);
