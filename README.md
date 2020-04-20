@@ -16,5 +16,5 @@ Please use the git lfs to download gap_riscv_toolchain:
 git lfs clone https://github.com/GreenWaves-Technologies/gap_riscv_toolchain_ubuntu_18.git
 ~~~~~
 
-If you want to compiling the toolchain by yourseves, please clone the source from:
+If you want to compile the toolchain by yourself, please clone the source from:
 https://github.com/pulp-platform/pulp-riscv-gnu-toolchain
