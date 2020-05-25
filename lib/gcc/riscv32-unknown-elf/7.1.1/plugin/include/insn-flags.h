@@ -9,7 +9,7 @@
 #define HAVE_addhf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_addohf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_addsi3 1
-#define HAVE_adddi3 ((TARGET_64BIT||Has_64Int))
+#define HAVE_adddi3 ((!TARGET_64BIT&&Has_64Int))
 #define HAVE_subsf3 (TARGET_HARD_FLOAT)
 #define HAVE_subdf3 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_subhf3 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
@@ -194,9 +194,12 @@
 #define HAVE_andsi3 (!TARGET_64BIT)
 #define HAVE_iorsi3 (!TARGET_64BIT)
 #define HAVE_xorsi3 (!TARGET_64BIT)
-#define HAVE_anddi3 ((TARGET_64BIT || Has_64Int))
-#define HAVE_iordi3 ((TARGET_64BIT || Has_64Int))
-#define HAVE_xordi3 ((TARGET_64BIT || Has_64Int))
+#define HAVE_anddi3 (TARGET_64BIT)
+#define HAVE_iordi3 (TARGET_64BIT)
+#define HAVE_xordi3 (TARGET_64BIT)
+#define HAVE_and_di3 (Has_64Int&&!TARGET_64BIT)
+#define HAVE_ior_di3 (Has_64Int&&!TARGET_64BIT)
+#define HAVE_xor_di3 (Has_64Int&&!TARGET_64BIT)
 #define HAVE_one_cmplsi2 (!TARGET_64BIT)
 #define HAVE_one_cmpldi2 (TARGET_64BIT)
 #define HAVE_truncdfsf2 (TARGET_DOUBLE_FLOAT)
@@ -1272,6 +1275,9 @@ extern rtx        gen_xorsi3                               (rtx, rtx, rtx);
 extern rtx        gen_anddi3                               (rtx, rtx, rtx);
 extern rtx        gen_iordi3                               (rtx, rtx, rtx);
 extern rtx        gen_xordi3                               (rtx, rtx, rtx);
+extern rtx        gen_and_di3                              (rtx, rtx, rtx);
+extern rtx        gen_ior_di3                              (rtx, rtx, rtx);
+extern rtx        gen_xor_di3                              (rtx, rtx, rtx);
 extern rtx        gen_one_cmplsi2                          (rtx, rtx);
 extern rtx        gen_one_cmpldi2                          (rtx, rtx);
 extern rtx        gen_truncdfsf2                           (rtx, rtx);

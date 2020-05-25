@@ -31,7 +31,9 @@ extern int arith_operand_opt_imm (rtx, machine_mode);
 extern int const_csr_operand (rtx, machine_mode);
 extern int csr_operand (rtx, machine_mode);
 extern int sle_operand (rtx, machine_mode);
+extern int sleint64_operand (rtx, machine_mode);
 extern int sleu_operand (rtx, machine_mode);
+extern int sleuint64_operand (rtx, machine_mode);
 extern int const_0_operand (rtx, machine_mode);
 extern int reg_or_0_operand (rtx, machine_mode);
 extern int reg_or_imm5_operand (rtx, machine_mode);
@@ -96,6 +98,8 @@ enum constraint_num
   CONSTRAINT_U,
   CONSTRAINT_YG,
   CONSTRAINT_YM,
+  CONSTRAINT_YI,
+  CONSTRAINT_YJ,
   CONSTRAINT_vIsdc,
   CONSTRAINT_vIusc,
   CONSTRAINT_vIzzz,
