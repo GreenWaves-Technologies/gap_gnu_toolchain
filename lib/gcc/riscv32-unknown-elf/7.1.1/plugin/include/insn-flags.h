@@ -330,6 +330,7 @@
 #define HAVE_storev2ohf_ind_reg_reg ((((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG)) && ((Has_F16ALT)))
 #define HAVE_storev4qi_ind_reg_reg (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOINDREGREG))
 #define HAVE_load_evt_unit ((Pulp_Cpu>=PULP_V2 || Pulp_Cpu==PULP_SLIM))
+#define HAVE_load_evt_unit_internal ((Pulp_Cpu>=PULP_V2 || Pulp_Cpu==PULP_SLIM))
 #define HAVE_read_spr ((Pulp_Cpu>=PULP_V2 || (Pulp_Cpu==PULP_SLIM)))
 #define HAVE_read_spr_vol ((Pulp_Cpu>=PULP_V2 || (Pulp_Cpu==PULP_SLIM)))
 #define HAVE_write_spr ((Pulp_Cpu>=PULP_V2 || (Pulp_Cpu==PULP_SLIM)))
@@ -962,6 +963,7 @@
 #define HAVE_clzsi2 (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOBITOP))
 #define HAVE_paritysi2 (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOBITOP))
 #define HAVE_movdi 1
+#define HAVE_load_evt_unit_fenced ((Pulp_Cpu>=PULP_V2))
 #define HAVE_pulp_omp_barrier ((Pulp_Cpu>=PULP_V2))
 #define HAVE_pulp_omp_critical_start ((Pulp_Cpu>=PULP_V2))
 #define HAVE_pulp_omp_critical_end ((Pulp_Cpu>=PULP_V2))
@@ -1432,6 +1434,7 @@ extern rtx        gen_storev2hf_ind_reg_reg                (rtx, rtx, rtx);
 extern rtx        gen_storev2ohf_ind_reg_reg               (rtx, rtx, rtx);
 extern rtx        gen_storev4qi_ind_reg_reg                (rtx, rtx, rtx);
 extern rtx        gen_load_evt_unit                        (rtx, rtx, rtx);
+extern rtx        gen_load_evt_unit_internal               (rtx, rtx, rtx);
 extern rtx        gen_read_spr                             (rtx, rtx);
 extern rtx        gen_read_spr_vol                         (rtx, rtx);
 extern rtx        gen_write_spr                            (rtx, rtx);
@@ -2072,6 +2075,7 @@ extern rtx        gen_maddohfsf4                           (rtx, rtx, rtx, rtx);
 extern rtx        gen_clzsi2                               (rtx, rtx);
 extern rtx        gen_paritysi2                            (rtx, rtx);
 extern rtx        gen_movdi                                (rtx, rtx);
+extern rtx        gen_load_evt_unit_fenced                 (rtx, rtx, rtx);
 extern rtx        gen_pulp_omp_barrier                     (void);
 extern rtx        gen_pulp_omp_critical_start              (void);
 extern rtx        gen_pulp_omp_critical_end                (void);
