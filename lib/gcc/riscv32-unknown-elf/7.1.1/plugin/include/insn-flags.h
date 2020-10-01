@@ -171,10 +171,8 @@
 #define HAVE_clip_maxmin ((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOCLIP && riscv_valid_clip_operands (operands[2], operands[3], 1))
 #define HAVE_clip_minmax ((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOCLIP && riscv_valid_clip_operands (operands[3], operands[2], 1))
 #define HAVE_clip_minmax_reg ((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOCLIP)
-#define HAVE_clip_maxmin_reg ((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOCLIP)
 #define HAVE_clipu_maxmin ((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOCLIP && riscv_valid_clip_operands (operands[2], operands[3], 0))
 #define HAVE_clipu_minmax ((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOCLIP && riscv_valid_clip_operands (operands[3], operands[2], 0))
-#define HAVE_clipu_maxmin_reg ((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOCLIP)
 #define HAVE_clipu_minmax_reg ((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOCLIP)
 #define HAVE_bclrsi3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOBITOP && riscv_valid_bit_field_imm_operand(operands[2], NULL, 0, NULL, NULL)))
 #define HAVE_bclrsi3_reg (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOBITOP))
@@ -527,6 +525,10 @@
 #define HAVE_vec_pack_v4qi_lo (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)))
 #define HAVE_vec_pack_v4qi_lo_first (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)))
 #define HAVE_vec_pack_v4qi_hi (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)))
+#define HAVE_unpack1_lo_h_b_s (((Pulp_Cpu==PULP_GAP9) && !TARGET_MASK_NOVECT))
+#define HAVE_unpack1_lo_h_b_u (((Pulp_Cpu==PULP_GAP9) && !TARGET_MASK_NOVECT))
+#define HAVE_unpack1_hi_h_b_s (((Pulp_Cpu==PULP_GAP9) && !TARGET_MASK_NOVECT))
+#define HAVE_unpack1_hi_h_b_u (((Pulp_Cpu==PULP_GAP9) && !TARGET_MASK_NOVECT))
 #define HAVE_vec_permv2hf_internal2_1 ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)  && riscv_valid_permute_operands (operands[1], operands[2], operands[3]))) && (Has_F16))
 #define HAVE_vec_permv2ohf_internal2_1 ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)  && riscv_valid_permute_operands (operands[1], operands[2], operands[3]))) && (Has_F16ALT))
 #define HAVE_vec_permv2hi_internal2_1 (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)  && riscv_valid_permute_operands (operands[1], operands[2], operands[3])))
@@ -1253,10 +1255,8 @@ extern rtx        gen_subRNu_reg_si3                       (rtx, rtx, rtx, rtx);
 extern rtx        gen_clip_maxmin                          (rtx, rtx, rtx, rtx);
 extern rtx        gen_clip_minmax                          (rtx, rtx, rtx, rtx);
 extern rtx        gen_clip_minmax_reg                      (rtx, rtx, rtx);
-extern rtx        gen_clip_maxmin_reg                      (rtx, rtx, rtx);
 extern rtx        gen_clipu_maxmin                         (rtx, rtx, rtx, rtx);
 extern rtx        gen_clipu_minmax                         (rtx, rtx, rtx, rtx);
-extern rtx        gen_clipu_maxmin_reg                     (rtx, rtx, rtx);
 extern rtx        gen_clipu_minmax_reg                     (rtx, rtx, rtx);
 extern rtx        gen_bclrsi3                              (rtx, rtx, rtx);
 extern rtx        gen_bclrsi3_reg                          (rtx, rtx, rtx);
@@ -1627,6 +1627,10 @@ extern rtx        gen_vec_pack_v2hi                        (rtx, rtx, rtx);
 extern rtx        gen_vec_pack_v4qi_lo                     (rtx, rtx, rtx, rtx);
 extern rtx        gen_vec_pack_v4qi_lo_first               (rtx, rtx, rtx);
 extern rtx        gen_vec_pack_v4qi_hi                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_unpack1_lo_h_b_s                     (rtx, rtx);
+extern rtx        gen_unpack1_lo_h_b_u                     (rtx, rtx);
+extern rtx        gen_unpack1_hi_h_b_s                     (rtx, rtx);
+extern rtx        gen_unpack1_hi_h_b_u                     (rtx, rtx);
 extern rtx        gen_vec_permv2hf_internal2_1             (rtx, rtx, rtx, rtx);
 extern rtx        gen_vec_permv2ohf_internal2_1            (rtx, rtx, rtx, rtx);
 extern rtx        gen_vec_permv2hi_internal2_1             (rtx, rtx, rtx, rtx);
