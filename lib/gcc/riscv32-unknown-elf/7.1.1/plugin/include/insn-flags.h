@@ -529,9 +529,11 @@
 #define HAVE_unpack1_lo_h_b_u (((Pulp_Cpu==PULP_GAP9) && !TARGET_MASK_NOVECT))
 #define HAVE_unpack1_hi_h_b_s (((Pulp_Cpu==PULP_GAP9) && !TARGET_MASK_NOVECT))
 #define HAVE_unpack1_hi_h_b_u (((Pulp_Cpu==PULP_GAP9) && !TARGET_MASK_NOVECT))
-#define HAVE_vec_permv2hf_internal2_1 ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)  && riscv_valid_permute_operands (operands[1], operands[2], operands[3]))) && (Has_F16))
-#define HAVE_vec_permv2ohf_internal2_1 ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)  && riscv_valid_permute_operands (operands[1], operands[2], operands[3]))) && (Has_F16ALT))
-#define HAVE_vec_permv2hi_internal2_1 (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)  && riscv_valid_permute_operands (operands[1], operands[2], operands[3])))
+#define HAVE_unpack2_h_b_s (((Pulp_Cpu==PULP_GAP9) && !TARGET_MASK_NOVECT))
+#define HAVE_unpack2_h_b_u (((Pulp_Cpu==PULP_GAP9) && !TARGET_MASK_NOVECT))
+#define HAVE_vec_permv2hf_internal2_1 ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)  && riscv_valid_permute_operands (operands[1], operands[1], operands[2]))) && (Has_F16))
+#define HAVE_vec_permv2ohf_internal2_1 ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)  && riscv_valid_permute_operands (operands[1], operands[1], operands[2]))) && (Has_F16ALT))
+#define HAVE_vec_permv2hi_internal2_1 (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)  && riscv_valid_permute_operands (operands[1], operands[1], operands[2])))
 #define HAVE_vec_permv2hf_internal2 ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK))) && (Has_F16))
 #define HAVE_vec_permv2ohf_internal2 ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK))) && (Has_F16ALT))
 #define HAVE_vec_permv2hi_internal2 (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)))
@@ -544,7 +546,7 @@
 #define HAVE_vec_permv2hf_high ((((Pulp_Cpu==PULP_GAP8||Pulp_Cpu==PULP_GAP9) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK))) && (Has_F16))
 #define HAVE_vec_permv2ohf_high ((((Pulp_Cpu==PULP_GAP8||Pulp_Cpu==PULP_GAP9) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK))) && (Has_F16ALT))
 #define HAVE_vec_permv2hi_high (((Pulp_Cpu==PULP_GAP8||Pulp_Cpu==PULP_GAP9) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)))
-#define HAVE_vec_permv4qi_internal2_1 (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)  && riscv_valid_permute_operands (operands[1], operands[2], operands[3])))
+#define HAVE_vec_permv4qi_internal2_1 (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)  && riscv_valid_permute_operands (operands[1], operands[1], operands[2])))
 #define HAVE_vec_permv4qi_internal2 (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)))
 #define HAVE_vec_permv4qi_int1 (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)))
 #define HAVE_vec_setv2hf_internal ((((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOVECT)) && (Has_F16))
@@ -1009,6 +1011,9 @@
 #define HAVE_vec_unpacks_hi_v2hf (TARGET_HARD_FLOAT && Has_F16)
 #define HAVE_vec_unpacks_hi_v2ohf (TARGET_HARD_FLOAT && Has_F16ALT)
 #define HAVE_vec_pack_v4qi (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)))
+#define HAVE_vec_perm_constv2hf ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK))) && (Has_F16))
+#define HAVE_vec_perm_constv2ohf ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK))) && (Has_F16ALT))
+#define HAVE_vec_perm_constv2hi (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)))
 #define HAVE_vec_permv2hf ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK))) && (Has_F16))
 #define HAVE_vec_permv2ohf ((((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK))) && (Has_F16ALT))
 #define HAVE_vec_permv2hi (((Pulp_Cpu>=PULP_V2) && !(TARGET_MASK_NOVECT||TARGET_MASK_NOSHUFFLEPACK)))
@@ -1631,9 +1636,11 @@ extern rtx        gen_unpack1_lo_h_b_s                     (rtx, rtx);
 extern rtx        gen_unpack1_lo_h_b_u                     (rtx, rtx);
 extern rtx        gen_unpack1_hi_h_b_s                     (rtx, rtx);
 extern rtx        gen_unpack1_hi_h_b_u                     (rtx, rtx);
-extern rtx        gen_vec_permv2hf_internal2_1             (rtx, rtx, rtx, rtx);
-extern rtx        gen_vec_permv2ohf_internal2_1            (rtx, rtx, rtx, rtx);
-extern rtx        gen_vec_permv2hi_internal2_1             (rtx, rtx, rtx, rtx);
+extern rtx        gen_unpack2_h_b_s                        (rtx, rtx, rtx);
+extern rtx        gen_unpack2_h_b_u                        (rtx, rtx, rtx);
+extern rtx        gen_vec_permv2hf_internal2_1             (rtx, rtx, rtx);
+extern rtx        gen_vec_permv2ohf_internal2_1            (rtx, rtx, rtx);
+extern rtx        gen_vec_permv2hi_internal2_1             (rtx, rtx, rtx);
 extern rtx        gen_vec_permv2hf_internal2               (rtx, rtx, rtx, rtx);
 extern rtx        gen_vec_permv2ohf_internal2              (rtx, rtx, rtx, rtx);
 extern rtx        gen_vec_permv2hi_internal2               (rtx, rtx, rtx, rtx);
@@ -1646,7 +1653,7 @@ extern rtx        gen_vec_permv2hi_low                     (rtx, rtx, rtx);
 extern rtx        gen_vec_permv2hf_high                    (rtx, rtx, rtx);
 extern rtx        gen_vec_permv2ohf_high                   (rtx, rtx, rtx);
 extern rtx        gen_vec_permv2hi_high                    (rtx, rtx, rtx);
-extern rtx        gen_vec_permv4qi_internal2_1             (rtx, rtx, rtx, rtx);
+extern rtx        gen_vec_permv4qi_internal2_1             (rtx, rtx, rtx);
 extern rtx        gen_vec_permv4qi_internal2               (rtx, rtx, rtx, rtx);
 extern rtx        gen_vec_permv4qi_int1                    (rtx, rtx, rtx);
 extern rtx        gen_vec_setv2hf_internal                 (rtx, rtx, rtx, rtx);
@@ -2123,6 +2130,9 @@ extern rtx        gen_fixuns_truncv2ohfv2hi2               (rtx, rtx);
 extern rtx        gen_vec_unpacks_hi_v2hf                  (rtx, rtx);
 extern rtx        gen_vec_unpacks_hi_v2ohf                 (rtx, rtx);
 extern rtx        gen_vec_pack_v4qi                        (rtx, rtx, rtx, rtx, rtx);
+extern rtx        gen_vec_perm_constv2hf                   (rtx, rtx, rtx, rtx);
+extern rtx        gen_vec_perm_constv2ohf                  (rtx, rtx, rtx, rtx);
+extern rtx        gen_vec_perm_constv2hi                   (rtx, rtx, rtx, rtx);
 extern rtx        gen_vec_permv2hf                         (rtx, rtx, rtx, rtx);
 extern rtx        gen_vec_permv2ohf                        (rtx, rtx, rtx, rtx);
 extern rtx        gen_vec_permv2hi                         (rtx, rtx, rtx, rtx);

@@ -21267,15 +21267,15 @@
   nil 0 nil nil )
  
  (!type struct 1385 nil  gc_used "import_export_symbol"
-  (!srcfileloc  "config/riscv/riscv.c" 6185)
+  (!srcfileloc  "config/riscv/riscv.c" 6200)
   (!fields 2 
    (!pair  "decl"
     (!type already_seen 22)
-    (!srcfileloc  "config/riscv/riscv.c" 6183)
+    (!srcfileloc  "config/riscv/riscv.c" 6198)
     nil )
    (!pair  "name"
     (!type already_seen 8)
-    (!srcfileloc  "config/riscv/riscv.c" 6184)
+    (!srcfileloc  "config/riscv/riscv.c" 6199)
     nil )
   )
   nil 1023 nil nil )
@@ -21285,15 +21285,15 @@
    (!type already_seen 1386)
   )
   gc_pointed_to "vec<import_export_symbol,va_gc>"
-  (!srcfileloc  "config/riscv/riscv.c" 6190)
+  (!srcfileloc  "config/riscv/riscv.c" 6205)
   (!fields 2 
    (!pair  "va_gc"
     (!type already_seen 71)
-    (!srcfileloc  "config/riscv/riscv.c" 6190)
+    (!srcfileloc  "config/riscv/riscv.c" 6205)
     nil )
    (!pair  "import_export_symbol"
     (!type already_seen 1385)
-    (!srcfileloc  "config/riscv/riscv.c" 6190)
+    (!srcfileloc  "config/riscv/riscv.c" 6205)
     nil )
   )
  )
@@ -26150,15 +26150,15 @@
   nil )
  (!pair  "vec<import_export_symbol,va_gc>"
   (!type already_seen 1386)
-  (!srcfileloc  "config/riscv/riscv.c" 6190)
+  (!srcfileloc  "config/riscv/riscv.c" 6205)
   nil )
  (!pair  "import_export_symbol"
   (!type already_seen 1385)
-  (!srcfileloc  "config/riscv/riscv.c" 6185)
+  (!srcfileloc  "config/riscv/riscv.c" 6200)
   nil )
  (!pair  "riscv_save_restore_fn"
   (!type already_seen 2)
-  (!srcfileloc  "config/riscv/riscv.c" 4280)
+  (!srcfileloc  "config/riscv/riscv.c" 4295)
   nil )
  (!pair  "riscv_aggregate_field"
   (!type already_seen 1382)
@@ -29528,11 +29528,11 @@
  )
  (!pair  "export_symbols"
   (!type already_seen 1387)
-  (!srcfileloc  "config/riscv/riscv.c" 6191)
+  (!srcfileloc  "config/riscv/riscv.c" 6206)
   nil )
  (!pair  "import_symbols"
   (!type already_seen 1387)
-  (!srcfileloc  "config/riscv/riscv.c" 6190)
+  (!srcfileloc  "config/riscv/riscv.c" 6205)
   nil )
  (!pair  "riscv_tls_symbol"
   (!type already_seen 128)
