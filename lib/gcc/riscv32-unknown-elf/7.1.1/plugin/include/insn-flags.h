@@ -102,6 +102,8 @@
 #define HAVE_fl1si2 (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOBITOP))
 #define HAVE_ctzsi2 (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOBITOP))
 #define HAVE_rotrsi3 (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOBITOP))
+#define HAVE_truncv2hfhf2 ((Pulp_Cpu>=PULP_GAP9))
+#define HAVE_truncv2ohfohf2 ((Pulp_Cpu>=PULP_GAP9))
 #define HAVE_truncsihi2 1
 #define HAVE_truncsiqi2 1
 #define HAVE_mulhisi3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOMAC))
@@ -1191,6 +1193,8 @@ extern rtx        gen_clrsbsi2                             (rtx, rtx);
 extern rtx        gen_fl1si2                               (rtx, rtx);
 extern rtx        gen_ctzsi2                               (rtx, rtx);
 extern rtx        gen_rotrsi3                              (rtx, rtx, rtx);
+extern rtx        gen_truncv2hfhf2                         (rtx, rtx);
+extern rtx        gen_truncv2ohfohf2                       (rtx, rtx);
 extern rtx        gen_truncsihi2                           (rtx, rtx);
 extern rtx        gen_truncsiqi2                           (rtx, rtx);
 extern rtx        gen_mulhisi3                             (rtx, rtx, rtx);
