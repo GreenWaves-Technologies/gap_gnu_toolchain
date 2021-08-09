@@ -53,7 +53,7 @@ if [ x$1 != x ] ; then
   prefix=$1
   shift
 else
-  prefix=/home/haugoug/src/riscv-gnu-toolchain/install
+  prefix=/home/yao/riscv-gnu-toolchain/install
 fi
 
 # Allow for alternate isysroot in which to find headers
