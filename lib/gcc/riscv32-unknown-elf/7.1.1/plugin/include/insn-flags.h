@@ -38,14 +38,14 @@
 #define HAVE_udivdi3 (TARGET_DIV && TARGET_64BIT)
 #define HAVE_moddi3 (TARGET_DIV && TARGET_64BIT)
 #define HAVE_umoddi3 (TARGET_DIV && TARGET_64BIT)
-#define HAVE_divsf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_HARD_FLOAT))
-#define HAVE_divdf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_DOUBLE_FLOAT))
-#define HAVE_divhf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16)))
-#define HAVE_divohf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
-#define HAVE_sqrtsf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_HARD_FLOAT))
-#define HAVE_sqrtdf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_DOUBLE_FLOAT))
-#define HAVE_sqrthf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16)))
-#define HAVE_sqrtohf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_divsf3_internal ((TARGET_HARD_FLOAT && TARGET_FDIV && !(Is_Gap9_Vega && (SFmode == OHFmode))) && (TARGET_HARD_FLOAT))
+#define HAVE_divdf3_internal ((TARGET_HARD_FLOAT && TARGET_FDIV && !(Is_Gap9_Vega && (DFmode == OHFmode))) && (TARGET_DOUBLE_FLOAT))
+#define HAVE_divhf3_internal ((TARGET_HARD_FLOAT && TARGET_FDIV && !(Is_Gap9_Vega && (HFmode == OHFmode))) && ((TARGET_HARD_FLOAT&&Has_F16)))
+#define HAVE_divohf3_internal ((TARGET_HARD_FLOAT && TARGET_FDIV && !(Is_Gap9_Vega && (OHFmode == OHFmode))) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_sqrtsf2_internal ((TARGET_HARD_FLOAT && TARGET_FDIV && !(Is_Gap9_Vega && (SFmode == OHFmode))) && (TARGET_HARD_FLOAT))
+#define HAVE_sqrtdf2_internal ((TARGET_HARD_FLOAT && TARGET_FDIV && !(Is_Gap9_Vega && (DFmode == OHFmode))) && (TARGET_DOUBLE_FLOAT))
+#define HAVE_sqrthf2_internal ((TARGET_HARD_FLOAT && TARGET_FDIV && !(Is_Gap9_Vega && (HFmode == OHFmode))) && ((TARGET_HARD_FLOAT&&Has_F16)))
+#define HAVE_sqrtohf2_internal ((TARGET_HARD_FLOAT && TARGET_FDIV && !(Is_Gap9_Vega && (OHFmode == OHFmode))) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_fmasf4 (TARGET_HARD_FLOAT)
 #define HAVE_fmadf4 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_fmahf4 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
@@ -620,6 +620,16 @@
 #define HAVE_sminscv2ohf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16ALT))
 #define HAVE_smaxscv2ohf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16ALT))
 #define HAVE_mulscv2ohf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16ALT))
+#define HAVE_add_swap_scv2hf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16))
+#define HAVE_sub_swap_scv2hf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16))
+#define HAVE_smin_swap_scv2hf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16))
+#define HAVE_smax_swap_scv2hf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16))
+#define HAVE_mul_swap_scv2hf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16))
+#define HAVE_add_swap_scv2ohf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16ALT))
+#define HAVE_sub_swap_scv2ohf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16ALT))
+#define HAVE_smin_swap_scv2ohf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16ALT))
+#define HAVE_smax_swap_scv2ohf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16ALT))
+#define HAVE_mul_swap_scv2ohf3 ((TARGET_HARD_FLOAT && (Has_F16 || Has_F16ALT)) && (Has_F16ALT))
 #define HAVE_addv2hi3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOVECT))
 #define HAVE_subv2hi3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOVECT))
 #define HAVE_sminv2hi3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOVECT))
@@ -965,6 +975,14 @@
 #define HAVE_mulsidi3 ((TARGET_MUL||(Pulp_Cpu>=PULP_V2)||(Pulp_Cpu==PULP_SLIM)) && !TARGET_64BIT)
 #define HAVE_umulsidi3 ((TARGET_MUL||(Pulp_Cpu>=PULP_V2)||(Pulp_Cpu==PULP_SLIM)) && !TARGET_64BIT)
 #define HAVE_usmulsidi3 ((TARGET_MUL||(Pulp_Cpu>=PULP_V2)||(Pulp_Cpu==PULP_SLIM)) && !TARGET_64BIT)
+#define HAVE_divsf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_HARD_FLOAT))
+#define HAVE_divdf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_DOUBLE_FLOAT))
+#define HAVE_divhf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16)))
+#define HAVE_divohf3 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_sqrtsf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_HARD_FLOAT))
+#define HAVE_sqrtdf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && (TARGET_DOUBLE_FLOAT))
+#define HAVE_sqrthf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16)))
+#define HAVE_sqrtohf2 ((TARGET_HARD_FLOAT && TARGET_FDIV) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_maddohfsf4 ((TARGET_HARD_FLOAT && Has_FAUX && (OHFmode == OHFmode && Has_F16ALT)) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_clzsi2 (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOBITOP))
 #define HAVE_paritysi2 (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOBITOP))
@@ -1105,14 +1123,14 @@ extern rtx        gen_divdi3                               (rtx, rtx, rtx);
 extern rtx        gen_udivdi3                              (rtx, rtx, rtx);
 extern rtx        gen_moddi3                               (rtx, rtx, rtx);
 extern rtx        gen_umoddi3                              (rtx, rtx, rtx);
-extern rtx        gen_divsf3                               (rtx, rtx, rtx);
-extern rtx        gen_divdf3                               (rtx, rtx, rtx);
-extern rtx        gen_divhf3                               (rtx, rtx, rtx);
-extern rtx        gen_divohf3                              (rtx, rtx, rtx);
-extern rtx        gen_sqrtsf2                              (rtx, rtx);
-extern rtx        gen_sqrtdf2                              (rtx, rtx);
-extern rtx        gen_sqrthf2                              (rtx, rtx);
-extern rtx        gen_sqrtohf2                             (rtx, rtx);
+extern rtx        gen_divsf3_internal                      (rtx, rtx, rtx);
+extern rtx        gen_divdf3_internal                      (rtx, rtx, rtx);
+extern rtx        gen_divhf3_internal                      (rtx, rtx, rtx);
+extern rtx        gen_divohf3_internal                     (rtx, rtx, rtx);
+extern rtx        gen_sqrtsf2_internal                     (rtx, rtx);
+extern rtx        gen_sqrtdf2_internal                     (rtx, rtx);
+extern rtx        gen_sqrthf2_internal                     (rtx, rtx);
+extern rtx        gen_sqrtohf2_internal                    (rtx, rtx);
 extern rtx        gen_fmasf4                               (rtx, rtx, rtx, rtx);
 extern rtx        gen_fmadf4                               (rtx, rtx, rtx, rtx);
 extern rtx        gen_fmahf4                               (rtx, rtx, rtx, rtx);
@@ -1729,6 +1747,16 @@ extern rtx        gen_subscv2ohf3                          (rtx, rtx, rtx);
 extern rtx        gen_sminscv2ohf3                         (rtx, rtx, rtx);
 extern rtx        gen_smaxscv2ohf3                         (rtx, rtx, rtx);
 extern rtx        gen_mulscv2ohf3                          (rtx, rtx, rtx);
+extern rtx        gen_add_swap_scv2hf3                     (rtx, rtx, rtx);
+extern rtx        gen_sub_swap_scv2hf3                     (rtx, rtx, rtx);
+extern rtx        gen_smin_swap_scv2hf3                    (rtx, rtx, rtx);
+extern rtx        gen_smax_swap_scv2hf3                    (rtx, rtx, rtx);
+extern rtx        gen_mul_swap_scv2hf3                     (rtx, rtx, rtx);
+extern rtx        gen_add_swap_scv2ohf3                    (rtx, rtx, rtx);
+extern rtx        gen_sub_swap_scv2ohf3                    (rtx, rtx, rtx);
+extern rtx        gen_smin_swap_scv2ohf3                   (rtx, rtx, rtx);
+extern rtx        gen_smax_swap_scv2ohf3                   (rtx, rtx, rtx);
+extern rtx        gen_mul_swap_scv2ohf3                    (rtx, rtx, rtx);
 extern rtx        gen_addv2hi3                             (rtx, rtx, rtx);
 extern rtx        gen_subv2hi3                             (rtx, rtx, rtx);
 extern rtx        gen_sminv2hi3                            (rtx, rtx, rtx);
@@ -2074,6 +2102,14 @@ extern rtx        gen_usmulditi3                           (rtx, rtx, rtx);
 extern rtx        gen_mulsidi3                             (rtx, rtx, rtx);
 extern rtx        gen_umulsidi3                            (rtx, rtx, rtx);
 extern rtx        gen_usmulsidi3                           (rtx, rtx, rtx);
+extern rtx        gen_divsf3                               (rtx, rtx, rtx);
+extern rtx        gen_divdf3                               (rtx, rtx, rtx);
+extern rtx        gen_divhf3                               (rtx, rtx, rtx);
+extern rtx        gen_divohf3                              (rtx, rtx, rtx);
+extern rtx        gen_sqrtsf2                              (rtx, rtx);
+extern rtx        gen_sqrtdf2                              (rtx, rtx);
+extern rtx        gen_sqrthf2                              (rtx, rtx);
+extern rtx        gen_sqrtohf2                             (rtx, rtx);
 static inline rtx gen_maddv1sfsf4                          (rtx, rtx, rtx, rtx);
 static inline rtx
 gen_maddv1sfsf4(rtx ARG_UNUSED (a), rtx ARG_UNUSED (b), rtx ARG_UNUSED (c), rtx ARG_UNUSED (d))

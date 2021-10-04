@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/yao/riscv-gnu-toolchain/install/riscv32-unknown-elf/lib/rv32imcxgap8/ilp32'
+libdir='/home/haugoug/src/riscv-gnu-toolchain/install/riscv32-unknown-elf/lib/rv32imcxgap8/ilp32'

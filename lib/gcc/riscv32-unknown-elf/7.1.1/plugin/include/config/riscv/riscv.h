@@ -68,6 +68,7 @@ along with GCC; see the file COPYING3.  If not see
 %{mL1Fc=*} \
 %{mPE=*} \
 %{mFC=*} \
+%{mwinsn} \
 %(subtarget_asm_spec)"
 
 #ifdef OLD
