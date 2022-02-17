@@ -249,20 +249,36 @@
 #define HAVE_floatunsdidf2 ((TARGET_HARD_FLOAT) && ((TARGET_DOUBLE_FLOAT) && (TARGET_64BIT)))
 #define HAVE_lrintsfsi2 (TARGET_HARD_FLOAT)
 #define HAVE_lroundsfsi2 (TARGET_HARD_FLOAT)
+#define HAVE_lrounddownsfsi2 (TARGET_HARD_FLOAT)
+#define HAVE_lroundupsfsi2 (TARGET_HARD_FLOAT)
 #define HAVE_lrintsfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && (TARGET_HARD_FLOAT)))
 #define HAVE_lroundsfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && (TARGET_HARD_FLOAT)))
+#define HAVE_lrounddownsfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && (TARGET_HARD_FLOAT)))
+#define HAVE_lroundupsfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && (TARGET_HARD_FLOAT)))
 #define HAVE_lrintdfsi2 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_lrounddfsi2 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
+#define HAVE_lrounddowndfsi2 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
+#define HAVE_lroundupdfsi2 ((TARGET_HARD_FLOAT) && (TARGET_DOUBLE_FLOAT))
 #define HAVE_lrintdfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && (TARGET_DOUBLE_FLOAT)))
 #define HAVE_lrounddfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && (TARGET_DOUBLE_FLOAT)))
+#define HAVE_lrounddowndfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && (TARGET_DOUBLE_FLOAT)))
+#define HAVE_lroundupdfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && (TARGET_DOUBLE_FLOAT)))
 #define HAVE_lrinthfsi2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_lroundhfsi2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
+#define HAVE_lrounddownhfsi2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
+#define HAVE_lrounduphfsi2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16)))
 #define HAVE_lrinthfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && ((TARGET_HARD_FLOAT&&Has_F16))))
 #define HAVE_lroundhfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && ((TARGET_HARD_FLOAT&&Has_F16))))
+#define HAVE_lrounddownhfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && ((TARGET_HARD_FLOAT&&Has_F16))))
+#define HAVE_lrounduphfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && ((TARGET_HARD_FLOAT&&Has_F16))))
 #define HAVE_lrintohfsi2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_lroundohfsi2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_lrounddownohfsi2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
+#define HAVE_lroundupohfsi2 ((TARGET_HARD_FLOAT) && ((TARGET_HARD_FLOAT&&Has_F16ALT)))
 #define HAVE_lrintohfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && ((TARGET_HARD_FLOAT&&Has_F16ALT))))
 #define HAVE_lroundohfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && ((TARGET_HARD_FLOAT&&Has_F16ALT))))
+#define HAVE_lrounddownohfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && ((TARGET_HARD_FLOAT&&Has_F16ALT))))
+#define HAVE_lroundupohfdi2 ((TARGET_HARD_FLOAT) && ((TARGET_64BIT) && ((TARGET_HARD_FLOAT&&Has_F16ALT))))
 #define HAVE_fix_truncohfsi2 (TARGET_HARD_FLOAT && Has_F16ALT)
 #define HAVE_fix_truncohfdi2 ((TARGET_HARD_FLOAT && Has_F16ALT) && (TARGET_64BIT))
 #define HAVE_fix_trunchfsi2 (TARGET_HARD_FLOAT && Has_F16)
@@ -1356,20 +1372,36 @@ extern rtx        gen_floatunssidf2                        (rtx, rtx);
 extern rtx        gen_floatunsdidf2                        (rtx, rtx);
 extern rtx        gen_lrintsfsi2                           (rtx, rtx);
 extern rtx        gen_lroundsfsi2                          (rtx, rtx);
+extern rtx        gen_lrounddownsfsi2                      (rtx, rtx);
+extern rtx        gen_lroundupsfsi2                        (rtx, rtx);
 extern rtx        gen_lrintsfdi2                           (rtx, rtx);
 extern rtx        gen_lroundsfdi2                          (rtx, rtx);
+extern rtx        gen_lrounddownsfdi2                      (rtx, rtx);
+extern rtx        gen_lroundupsfdi2                        (rtx, rtx);
 extern rtx        gen_lrintdfsi2                           (rtx, rtx);
 extern rtx        gen_lrounddfsi2                          (rtx, rtx);
+extern rtx        gen_lrounddowndfsi2                      (rtx, rtx);
+extern rtx        gen_lroundupdfsi2                        (rtx, rtx);
 extern rtx        gen_lrintdfdi2                           (rtx, rtx);
 extern rtx        gen_lrounddfdi2                          (rtx, rtx);
+extern rtx        gen_lrounddowndfdi2                      (rtx, rtx);
+extern rtx        gen_lroundupdfdi2                        (rtx, rtx);
 extern rtx        gen_lrinthfsi2                           (rtx, rtx);
 extern rtx        gen_lroundhfsi2                          (rtx, rtx);
+extern rtx        gen_lrounddownhfsi2                      (rtx, rtx);
+extern rtx        gen_lrounduphfsi2                        (rtx, rtx);
 extern rtx        gen_lrinthfdi2                           (rtx, rtx);
 extern rtx        gen_lroundhfdi2                          (rtx, rtx);
+extern rtx        gen_lrounddownhfdi2                      (rtx, rtx);
+extern rtx        gen_lrounduphfdi2                        (rtx, rtx);
 extern rtx        gen_lrintohfsi2                          (rtx, rtx);
 extern rtx        gen_lroundohfsi2                         (rtx, rtx);
+extern rtx        gen_lrounddownohfsi2                     (rtx, rtx);
+extern rtx        gen_lroundupohfsi2                       (rtx, rtx);
 extern rtx        gen_lrintohfdi2                          (rtx, rtx);
 extern rtx        gen_lroundohfdi2                         (rtx, rtx);
+extern rtx        gen_lrounddownohfdi2                     (rtx, rtx);
+extern rtx        gen_lroundupohfdi2                       (rtx, rtx);
 extern rtx        gen_fix_truncohfsi2                      (rtx, rtx);
 extern rtx        gen_fix_truncohfdi2                      (rtx, rtx);
 extern rtx        gen_fix_trunchfsi2                       (rtx, rtx);
