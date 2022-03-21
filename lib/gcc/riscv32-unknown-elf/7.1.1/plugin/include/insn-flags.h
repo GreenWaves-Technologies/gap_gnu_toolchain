@@ -1004,6 +1004,7 @@
 #define HAVE_paritysi2 (((Pulp_Cpu>=PULP_V0) && !TARGET_MASK_NOBITOP))
 #define HAVE_movdi 1
 #define HAVE_load_evt_unit_fenced ((Pulp_Cpu>=PULP_V2))
+#define HAVE_pulp_omp_thread_num ((Pulp_Cpu>=PULP_V2))
 #define HAVE_pulp_omp_barrier ((Pulp_Cpu>=PULP_V2))
 #define HAVE_pulp_omp_critical_start ((Pulp_Cpu>=PULP_V2))
 #define HAVE_pulp_omp_critical_end ((Pulp_Cpu>=PULP_V2))
@@ -2159,6 +2160,7 @@ extern rtx        gen_clzsi2                               (rtx, rtx);
 extern rtx        gen_paritysi2                            (rtx, rtx);
 extern rtx        gen_movdi                                (rtx, rtx);
 extern rtx        gen_load_evt_unit_fenced                 (rtx, rtx, rtx);
+extern rtx        gen_pulp_omp_thread_num                  (rtx);
 extern rtx        gen_pulp_omp_barrier                     (void);
 extern rtx        gen_pulp_omp_critical_start              (void);
 extern rtx        gen_pulp_omp_critical_end                (void);
