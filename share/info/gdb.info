@@ -1,4 +1,4 @@
-This is gdb.info, produced by makeinfo version 6.7 from gdb.texinfo.
+This is gdb.info, produced by makeinfo version 6.5 from gdb.texinfo.
 
 Copyright (C) 1988-2016 Free Software Foundation, Inc.
 
@@ -52873,8 +52873,3 @@ Node: Concept Index1889122
 Node: Command and Variable Index2022767
 
 End Tag Table
-
-
-Local Variables:
-coding: utf-8
-End:

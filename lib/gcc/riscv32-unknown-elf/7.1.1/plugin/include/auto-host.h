@@ -1870,7 +1870,7 @@
 
 /* Define if valgrind's valgrind/memcheck.h header is installed. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_VALGRIND_MEMCHECK_H */
+#define HAVE_VALGRIND_MEMCHECK_H 1
 #endif
 
 
