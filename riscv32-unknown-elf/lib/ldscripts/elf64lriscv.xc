@@ -7,7 +7,7 @@ OUTPUT_FORMAT("elf64-littleriscv", "elf64-littleriscv",
 	      "elf64-littleriscv")
 OUTPUT_ARCH(riscv)
 ENTRY(_start)
-SEARCH_DIR("/home/haugoug/src/riscv-gnu-toolchain/install/riscv32-unknown-elf/lib");
+SEARCH_DIR("/home/yao/tools/riscv-gnu-toolchain/install/riscv32-unknown-elf/lib");
 SECTIONS
 {
   /* Read-only sections, merged into text segment: */
