@@ -164,8 +164,12 @@
 #define HAVE_subNu_reg_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND))
 #define HAVE_addRN_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND && riscv_valid_norm_round_imm_op(operands[3], operands[4], 31)))
 #define HAVE_addRNu_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND && riscv_valid_norm_round_imm_op(operands[3], operands[4], 31)))
+#define HAVE_normRN_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND && riscv_valid_norm_round_imm_op(operands[2], operands[3], 31)))
+#define HAVE_normRNu_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND && riscv_valid_norm_round_imm_op(operands[2], operands[3], 31)))
 #define HAVE_addRN_reg_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND))
 #define HAVE_addRNu_reg_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND))
+#define HAVE_normRN_reg_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND))
+#define HAVE_normRNu_reg_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND))
 #define HAVE_subRN_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND && riscv_valid_norm_round_imm_op(operands[3], operands[4], 31)))
 #define HAVE_subRNu_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND && riscv_valid_norm_round_imm_op(operands[3], operands[4], 31)))
 #define HAVE_subRN_reg_si3 (((Pulp_Cpu>=PULP_V2) && !TARGET_MASK_NOADDSUBNORMROUND))
@@ -1290,8 +1294,12 @@ extern rtx        gen_subN_reg_si3                         (rtx, rtx, rtx, rtx);
 extern rtx        gen_subNu_reg_si3                        (rtx, rtx, rtx, rtx);
 extern rtx        gen_addRN_si3                            (rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_addRNu_si3                           (rtx, rtx, rtx, rtx, rtx);
+extern rtx        gen_normRN_si3                           (rtx, rtx, rtx, rtx);
+extern rtx        gen_normRNu_si3                          (rtx, rtx, rtx, rtx);
 extern rtx        gen_addRN_reg_si3                        (rtx, rtx, rtx, rtx);
 extern rtx        gen_addRNu_reg_si3                       (rtx, rtx, rtx, rtx);
+extern rtx        gen_normRN_reg_si3                       (rtx, rtx, rtx);
+extern rtx        gen_normRNu_reg_si3                      (rtx, rtx, rtx);
 extern rtx        gen_subRN_si3                            (rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_subRNu_si3                           (rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_subRN_reg_si3                        (rtx, rtx, rtx, rtx);
