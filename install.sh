@@ -9,13 +9,7 @@ fi
 
 echo "Install path: $DIR_TOOLCHAIN"
 
-if [ ! -d "$DIR_TOOLCHAIN" ]; then
-    mkdir -p "$DIR_TOOLCHAIN" || exit 1
-    cp -rf ./* "$DIR_TOOLCHAIN" || exit 2
-else
-    echo "$DIR_TOOLCHAIN already exists!!! Please remove it if you want to update"
-    exit 3
-fi
+sudo rsync -av --delete --exclude ".git*" . $DIR_TOOLCHAIN || exit 1
 
 echo "Toolchain installed successfully!"
 if [ "$DIR_TOOLCHAIN" != "/usr/lib/gap_riscv_toolchain" ]; then
