@@ -31,6 +31,7 @@ along with GCC; see the file COPYING3.  If not see
 %{mEci:--mEci} \
 %{mComp:--mComp} \
 %{mDIE=*:--mDIE=%*} \
+%{mencrypt-info=*:--mencrypt-info=%*} \
 %{shared}"
 
 

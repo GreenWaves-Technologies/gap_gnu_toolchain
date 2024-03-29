@@ -69,6 +69,7 @@ along with GCC; see the file COPYING3.  If not see
 %{mPE=*} \
 %{mFC=*} \
 %{mwinsn} \
+%{mencrypt-info=*} \
 %(subtarget_asm_spec)"
 
 #ifdef OLD

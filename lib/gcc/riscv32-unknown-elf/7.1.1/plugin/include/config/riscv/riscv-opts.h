@@ -24,6 +24,7 @@ along with GCC; see the file COPYING3.  If not see
 #ifndef GCC_RISCV_OPTS_H
 #define GCC_RISCV_OPTS_H
 // #include <string.h>
+#include <stdint.h>
 
 enum riscv_abi_type {
   ABI_ILP32,
@@ -89,6 +90,7 @@ enum Pulp_Chip_Type
   PULP_CHIP_LAST
 };
 
+#define NONCE_LENGTH	16
 struct Pulp_Target_Chip
 {
         enum Pulp_Chip_Type chip;
@@ -98,6 +100,7 @@ struct Pulp_Target_Chip
         int Pulp_L2_Size;
         int Pulp_L1_Cluster_Size;
         int Pulp_L1_FC_Size;
+	unsigned char Nonce[NONCE_LENGTH];
 
 };
 
@@ -108,14 +111,14 @@ struct Pulp_Target_Chip
 #ifdef _WITH_PULP_CHIP_INFO_FUNCT_
 
 static struct Pulp_Target_Chip Pulp_Defined_Chips[PULP_CHIP_LAST] = {
-/* None */      {PULP_CHIP_NONE,        PULP_RISCV,     0, 4, 1024*300, 1024*64, 0},
-/* Honey */     {PULP_CHIP_HONEY,       PULP_V0,        0, 1, 1024*300, 1024*64, 0},
-/* Pulpino */   {PULP_CHIP_PULPINO,     PULP_V1,        0, 1, 1024*300, 1024*64, 0},
+/* None */      {PULP_CHIP_NONE,        PULP_RISCV,     0, 4, 1024*300, 1024*64, 0, {0}},
+/* Honey */     {PULP_CHIP_HONEY,       PULP_V0,        0, 1, 1024*300, 1024*64, 0, {0}},
+/* Pulpino */   {PULP_CHIP_PULPINO,     PULP_V1,        0, 1, 1024*300, 1024*64, 0, {0}},
 /* __GAP8 Start */
-/* Gap8 */      {PULP_CHIP_GAP8,        PULP_GAP8,      1, 8, 1024*512, 1024*64, 1024*32},
+/* Gap8 */      {PULP_CHIP_GAP8,        PULP_GAP8,      1, 8, 1024*512, 1024*64, 1024*32, {0}},
 /* __GAP8 Stop */
-/* Gap9 */      {PULP_CHIP_GAP9,        PULP_GAP9,      1, 9, 1024*3*512, 1024*128, 0},
-/* Gap10 */     {PULP_CHIP_GAP10,       PULP_GAP10,     1, 9, 1024*9*256, 1024*192, 0},
+/* Gap9 */      {PULP_CHIP_GAP9,        PULP_GAP9,      1, 9, 1024*3*512, 1024*128, 0, {0}},
+/* Gap10 */     {PULP_CHIP_GAP10,       PULP_GAP10,     1, 9, 1024*9*256, 1024*192, 0, {0}},
 };
 
 
@@ -214,6 +217,18 @@ static int ExtractChipInfo(char *Text, struct Pulp_Target_Chip *ChipInfo)
 	if (Pos != NULL) ChipInfo->Pulp_L1_Cluster_Size = atoi(Pos+5); else return 0;
         Pos = strstr(Text, "l1fc=");
 	if (Pos != NULL) ChipInfo->Pulp_L1_FC_Size = atoi(Pos+5); else return 0;
+        Pos = strstr(Text, "nonce=");
+	if (Pos != NULL) {
+		for (int i=0; i<NONCE_LENGTH; i++) {
+			unsigned char S0 = Pos[6+2*i],  S1 = Pos[6+2*i+1];
+			unsigned int R0, R1;
+			if (S0>='0' && S0<='9') R0 = S0-'0'; else if (S0>='a' && S0<='f') R0 = S0 - 'a' + 10; else R0 = -1;
+			if (S1>='0' && S1<='9') R1 = S1-'0'; else if (S1>='a' && S1<='f') R1 = S1 - 'a' + 10; else R1 = -1;
+			ChipInfo->Nonce[i] = ((R0<<4)|(R1));
+		}
+	} else {
+		for (int i=0; i<NONCE_LENGTH; i++) ChipInfo->Nonce[i] = 0;
+	}
 
         return 1;
 }
@@ -256,13 +271,27 @@ static const char *PulpProcessorImage(enum Pulp_Processor_Type Which)
         }
 }
 
+static unsigned char *NonceImage(unsigned char *Info, int Len, unsigned char *Str)
+
+{
+	for (int i=0; i<Len; i++) {
+		unsigned int X = Info[i], Y = X & 0x0F, Z = (X>>4)&0x0F;
+		Str[2*i  ] = (Z<10)?(Z+'0'):(Z-10+'a');
+		Str[2*i+1] = (Y<10)?(Y+'0'):(Y-10+'a');
+	}
+	Str[2*Len] = 0;
+	return Str;
+}
+
 static char *PulpChipInfoImage(struct Pulp_Target_Chip *ChipInfo, char *Buf)
 
 {
-	sprintf(Buf, "chip=%s cpu=%s pe=%d fc=%d l2=%d l1cl=%d l1fc=%d",
+	unsigned char Str[2*NONCE_LENGTH+1];
+
+	sprintf(Buf, "chip=%s cpu=%s pe=%d fc=%d l2=%d l1cl=%d l1fc=%d nonce=%s",
                      PulpChipImage(ChipInfo->chip), PulpProcessorImage(ChipInfo->processor),
                      ChipInfo->Pulp_PE, ChipInfo->Pulp_FC, ChipInfo->Pulp_L2_Size,
-                     ChipInfo->Pulp_L1_Cluster_Size, ChipInfo->Pulp_L1_FC_Size);
+                     ChipInfo->Pulp_L1_Cluster_Size, ChipInfo->Pulp_L1_FC_Size, NonceImage(ChipInfo->Nonce, NONCE_LENGTH, Str));
 	return Buf;
 
 }
